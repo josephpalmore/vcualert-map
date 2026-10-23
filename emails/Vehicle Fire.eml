@@ -1,0 +1,841 @@
+Delivered-To: palmoreja@apps.vcu.edu
+Received: by 2002:a05:7110:9196:b0:367:fb97:a500 with SMTP id r22csp10645427gef;
+        Thu, 22 Oct 2026 10:55:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AKwUvBzDjes9o0sdkqdO6Ofo6k6bphFh+r22OR08+aTqcIQo3iKs9hV/zjRbmWFgTEUnIZh61h9Ct66YtLs=@apps.vcu.edu
+X-Received: by 2002:a05:6870:a11b:b0:49e:334f:312d with SMTP id 586e51a60fabf-4a7dc1989b2mr4201272fac.16.1792691709253;
+        Thu, 22 Oct 2026 10:55:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792691709; cv=none;
+        d=google.com; s=arc-20260327;
+        b=r3VvvFBqqPNceqIfIdqLelSE/2bxjRklFMLCPsbLBYm8VseVP808JuGQ1iepA/pVli
+         /NxhRMu+r3tC/O3lv/+Yg2EClyebYsmlW0jBB4ahubO55WOoj7GMyq4FxgKcxLQ/YMys
+         avM5q8/tDTu6Heo99xqC2dweg+RzyX2/Nqj+G0Oc4Yqzh1q0ruuRQBTK1H+doQrycDhE
+         rdTvsMZaM3N3LfMNU2Lr6fixN37XAoOmtwhTyCZVd8KGkHVqi69Xb84AM8NDAQoCm0u5
+         4hKK9qM/NkO+AJ6CGyIUAlxg3arUwz141oYJRg95mBUlqxUYno75CsOW2xO8UOf/FWYb
+         eIuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=feedback-id:subject:to:content-transfer-encoding:mime-version
+         :list-unsubscribe:message-id:reply-to:from:date:dkim-signature
+         :dkim-signature:ironport-hdrordr:ironport-data:ironport-phdr
+         :ironport-sdr;
+        bh=bR18WCLqwinzW30aCM6L+s2AxsJU6wFXW+rTkeG3NYk=;
+        fh=iAoBVyxJF5DQjX6eRWeYF/fMGg2Kx8XupUh7NOyk7dA=;
+        b=Yn+spHAxwejT3e7hvCQv3LJ/yUuBgJbXc2wYSGdbNIGMo4G3s5ZLdGJUnT23eWzl09
+         5qdz7VnD1TktZt6hOQb8yJK2RfIucXZhoVdx4T2V31HTrmnrKKt3HDaAWut4HmPZdP2f
+         rHMero3oFO7fYza2DFI2Co60Ydll1dlFxQa4qlbsQpPaWmW/c5WrQOb2B9ueiFXNT74w
+         6PAG8C6/bNtKzsVuTXMheICxrEsaS0YwztY+jpt03HQ/Tl503OKu3pvZmD2CsoXtEmB0
+         TflTNH7Ei7wJlT70F2U5iA+CPEFkNEH0ERIj7c/ycjON8E/DDRtlXlvg2DnTVb4BV/IP
+         IL/g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@omnilert.com header.s=bhqhhub6iqirijcubmdprgkacmhafq7n header.b=I1ce1q3R;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=VB2GOhcx;
+       spf=pass (google.com: domain of 010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com designates 216.221.169.248 as permitted sender) smtp.mailfrom=010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com
+Return-Path: <010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com>
+Received: from esa.vcu.iphmx.com (esa.vcu.iphmx.com. [68.232.142.229])
+        by mx.google.com with ESMTPS id 586e51a60fabf-4a7d6157fb2si8286252fac.46.2026.10.22.10.55.08
+        for <palmoreja@apps.vcu.edu>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 22 Oct 2026 10:55:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com designates 216.221.169.248 as permitted sender) client-ip=216.221.169.248;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@omnilert.com header.s=bhqhhub6iqirijcubmdprgkacmhafq7n header.b=I1ce1q3R;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=VB2GOhcx;
+       spf=pass (google.com: domain of 010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com designates 216.221.169.248 as permitted sender) smtp.mailfrom=010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com
+X-CSE-ConnectionGUID: El3MY35rQ1OOaOx0uuxnAg==
+X-CSE-MsgGUID: ZU1Hj8+KRqGPlmsYRBjlCQ==
+Received-SPF: Pass (esa.vcu.iphmx.com: domain of
+  010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com
+  designates 216.221.169.248 as permitted sender)
+  identity=mailfrom; client-ip=216.221.169.248;
+  receiver=esa.vcu.iphmx.com;
+  envelope-from="010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com";
+  x-sender="010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com";
+  x-conformance=spf_only; x-record-type="v=spf1";
+  x-record-text="v=spf1 ip4:199.255.192.0/22
+  ip4:199.127.232.0/22 ip4:54.240.0.0/18 ip4:69.169.224.0/20
+  ip4:23.249.208.0/20 ip4:23.251.224.0/19 ip4:76.223.176.0/20
+  ip4:54.240.64.0/18 ip4:76.223.128.0/19 ip4:216.221.160.0/19
+  ip4:206.55.144.0/20 ip4:24.110.64.0/18 ip4:98.77.0.0/16 -all"
+Received-SPF: Pass (esa.vcu.iphmx.com: domain of
+  postmaster@g169-248.smtp-out.amazonses.com designates
+  216.221.169.248 as permitted sender) identity=helo;
+  client-ip=216.221.169.248; receiver=esa.vcu.iphmx.com;
+  envelope-from="010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com";
+  x-sender="postmaster@g169-248.smtp-out.amazonses.com";
+  x-conformance=spf_only; x-record-type="v=spf1";
+  x-record-text="v=spf1 ip4:216.221.169.248 -all"
+Authentication-Results: esa.vcu.iphmx.com; spf=Pass smtp.mailfrom=010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@sesemail.omnilert.com; spf=Pass smtp.helo=postmaster@g169-248.smtp-out.amazonses.com; dkim=pass (signature verified) header.i=@omnilert.com; dmarc=pass (p=quarantine dis=none) d=omnilert.com
+IronPort-SDR: 6ada4ddb_MO6smStMWvcPoQN2KOnb/3+A9kJjZOQS0D78YWmYreYz5Ye
+ 28vhZVn5jJLKQJV5Y1Qzu0hxuG2TA70e1F44xrA==
+X-ThreatScanner-Verdict: Negative
+X-IPAS-Result: =?us-ascii?q?A0H1CQBeTdpqd/ip3dhXAwYIEAESCwEMg02BBBsBb4EBE?=
+ =?us-ascii?q?wdRiCeOJYEVimOQfIE/DIEfFhwHFQEBAQEBAQEBAQkuARUNBAEBAwECAYR+j?=
+ =?us-ascii?q?hgCHwYBOBMBAgECAQMCAwEBAQEBAQEBAQEBAQoBAQEEAQEBAgEBAgQDAQEBA?=
+ =?us-ascii?q?QIQAUNJhk8Ni3UeO3FlCTcBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBA?=
+ =?us-ascii?q?QEBAQEBAQEBAQEBAQECCAUfPwEgAQEEAgwBDhQBDQEBBAgDHA0GHCULAQ0wO?=
+ =?us-ascii?q?wQBCw0EBIIuMwGCIgJQAxGpEYxuAQEBAXWBNB9iggwBAQYEAwICfoE3EttNA?=
+ =?us-ascii?q?waBNRiIXwErgTUBgQKCJYE4hDUngiiBRwOFBkwmHQECAQEXfxIBEgE2GBIIB?=
+ =?us-ascii?q?oF0gTOCNxqCDRlSKBIbDzwFBi4CHSMBARxaS4IHgS8qN4FHNYMXgUQgh3QjB?=
+ =?us-ascii?q?wc6J1UiAyYzLAFVEw0KCwcFJhhZUQM1EioVbjIdN2w+FwgnWBALBgU6Y4EeJ?=
+ =?us-ascii?q?XEjGTZrgQldgSspYQEgfQuBdgKCUYIAAgFJQQ4HRVMJJUMSRyQiCBIJARMaL?=
+ =?us-ascii?q?guBGjg8CSZBFQxmCxoFYggCDQx/OQkYDToOESwWIQkMGUIHAz8bAgYCBwOQe?=
+ =?us-ascii?q?GKDX4JNPo5pAQOEKSYBs02EDByCJIgpgVWONIcgM4RRl0A0jiqGQYUzjRSME?=
+ =?us-ascii?q?IF6lTRCWoRpYARbAT8jbFsOB00jggQagRlQAxkPkiRqgXqBdIpcvlYwRzICA?=
+ =?us-ascii?q?QgHLQcCBw8CkiYBgS4eAQE?=
+IronPort-PHdr: A9a23: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
+ AxLbhWdDbWlH1ijJowBBxFrVA==
+IronPort-Data: A9a23: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
+IronPort-HdrOrdr: A9a23:nzGWb6OMKsufj8BcTvijsMiBIKoaSvp037BN7TEVdfU1SL37qy
+ nKpp9w6faaslsssQ4b6La90cW7LU80jKQU3WBzB8bAYOCFggWVxehZhOPfKlvbdBEWndQtsp
+ uIHZIObOEYdWIasS/y2njAL+od
+X-Talos-CUID: 9a23:YNkZ5W5KRBRDFgc4HNss2UpPP/F+L2fklVD3KmioUXt0WLu8RgrF
+X-Talos-MUID: 9a23:BC04mQhVp9vBwqZJjnRGd8MpBvoxw6b+S2M3iLo+v8yfBBZaOTO2tWHi
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-AV: E=Sophos;i="6.27,172,1787025600"; 
+   d="scan'208,217";a="157706025"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+X-IronPort-Outbreak-Status: No, level 0, Unknown - Unknown
+X-MGA-submission: =?us-ascii?q?MDFqDS+LiXMjr94Ie8WAPoeM+wD6TIE27Jffnd?=
+ =?us-ascii?q?qhipbP2uVXWlxuskPfuLa7ErYrX/n1RCTqxvIWCLuilNw0Q5WHKdd2Tg?=
+ =?us-ascii?q?iRMRlNuhGeeE2DY/2CnSYJzR9uaGe3qAs7rK8dRRrc15Xw7YAXXw5wIP?=
+ =?us-ascii?q?rVhfuNMxAh+CSFW95tW5p9GA=3D=3D?=
+Received: from g169-248.smtp-out.amazonses.com ([216.221.169.248])
+  by esa5.vcu.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 22 Oct 2026 13:54:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=bhqhhub6iqirijcubmdprgkacmhafq7n; d=omnilert.com; t=1792691674;
+	h=Date:From:Reply-To:Message-ID:List-Unsubscribe:MIME-Version:Content-Type:Content-Transfer-Encoding:To:Subject;
+	bh=Ucdut5QuJ8nKjA4ijNdAcgg+L7SIldDA5K71P5CAh5Y=;
+	b=I1ce1q3RJ/uJuQc4hDXm3Afq3wnUO6tP47DZ4Zyb0nmpXcY+fHC8SK7pgbgoPdKX
+	68N7rTVGCPESsxicq5Yh7lo3npc2oc+coJySyAFEBtoIpNbjGTziQMg7jlBNY8l5P28
+	maHJpQghXobrVYj995ntbPcIqDXu01dVO3PSKhfQnELnkxfdZUG/MaIyOohBiQaqT+/
+	rlEhxIWjbgMJaHS+MUdCA5ec8/lBDlc2JZGtJx3fiAJvT3Et1QAuvf+5XB1OAowxkj5
+	kSfW0/HOEYl4z+doLnE5Szp9ARb2n6W47Vfnz+Lo7eFQ/kdx5q7Wj4t/zcO7ipB65rR
+	OXZgo4rtew==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1792691674;
+	h=Date:From:Reply-To:Message-ID:List-Unsubscribe:MIME-Version:Content-Type:Content-Transfer-Encoding:To:Subject:Feedback-ID;
+	bh=Ucdut5QuJ8nKjA4ijNdAcgg+L7SIldDA5K71P5CAh5Y=;
+	b=VB2GOhcxSqxyDXW7BQZfLT5JuObZtE995POYjisTC/qsvgRsPr15q5Osz/iwE4tO
+	rqp4gVMyJMbmWxN54zLHp1c89nPRFMa6FHQD8LmRYsMdlkBXAYRn1UyR9TdwJOyv7oq
+	3NhkS8HetedhJlgYEzgjeV44iPGXCKD6toFBeNnI=
+Date: Thu, 22 Oct 2026 17:54:34 +0000
+From: VCU Alert <no-reply@omnilert.com>
+Reply-To: VCU Alert <vcualert@vcu.edu>
+Message-ID: <010001a164c01eb6-d00e5d4b-8f1f-43a9-83f8-390feba699e9-000000@email.amazonses.com>
+X-Mailer: PHPMailer 6.9.3 (https://github.com/PHPMailer/PHPMailer)
+List-Unsubscribe: =?us-ascii?Q?<https://email.omnilert.io/unsubscribe/248701c0?=
+ =?us-ascii?Q?5acef778fa64>?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="b1=_QeChiCzwbm2ZKMQKtk8BX2M4nvXCQ1nxn4Ge3o7Gmf0"
+Content-Transfer-Encoding: 8bit
+To: palmoreja@vcu.edu
+Subject: Vehicle Fire
+Feedback-ID: ::1.us-east-1.aC+wS1V/3wk6PeuSmpAwEl8OIbqEEK47yp80nO6OvzA=:AmazonSES
+X-SES-Outgoing: 2026.10.22-216.221.169.248
+
+--b1=_QeChiCzwbm2ZKMQKtk8BX2M4nvXCQ1nxn4Ge3o7Gmf0
+Content-Type: text/plain; charset=us-ascii
+
+Vehicle Fire
+                                                        
+                                                            
+N 10th St and E Leigh St. Police on scene. Avoid area until further notice.
+
+                                                        
+                                                        
+                                                    
+                                                    
+                                                
+                                                
+                                            
+                                            
+                                        
+                                        
+                                    
+                                    
+                                
+                                
+                            
+                            
+                                
+                                
+                                    
+                                    
+                                        
+                                        
+                                            
+                                            
+                                                
+                                                
+                                                    
+                                                    Why am I receiving this email? Virginia Commonwealth University is dedicated to promoting a safe and secure environment for learning, living, working, or visiting. During an emergency, information leads to potentially life-saving decision making. To report a crime or emergency on campus, use the LiveSafe app or call (804) 828-1234. If you are off campus, dial 911.
+Access your Omnilert account here
+                                                    
+                                                    
+                                                
+                                                
+                                            
+                                            
+                                        
+                                        
+                                    
+                                    
+                                
+                                
+                            
+                            
+                            
+                            
+                                
+                                
+                                    
+                                    
+                                        
+                                        
+                                            
+                                            
+                                                
+                                                
+
+                                                    
+                                                    
+                                                        Unsubscribe
+
+--b1=_QeChiCzwbm2ZKMQKtk8BX2M4nvXCQ1nxn4Ge3o7Gmf0
+Content-Type: text/html; charset=us-ascii
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+            <html xmlns="http://www.w3.org/1999/xhtml">
+                <head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+                    <meta name="format-detection" content="telephone=no" />
+                    <meta name="x-apple-disable-message-reformatting" />
+                    <style type="text/css">
+                    html {
+                        background-color: #F4F4F4;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    body,
+                    #bodyTable,
+                    #bodyCell,
+                    #bodyCell {
+                        height: 100% !important;
+                        margin: 0;
+                        padding: 0;
+                        width: 100% !important;
+                        font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                    }
+
+                    table[id=bodyTable] {
+                        width: 100% !important;
+                        margin: auto;
+                        max-width: 500px !important;
+                        color: #7A7A7A;
+                        font-weight: normal;
+                    }
+
+                    img,
+                    a img {
+                        border: 0;
+                        outline: none;
+                        text-decoration: none;
+                        height: auto;
+                        line-height: 100%;
+                    }
+
+                    a {
+                        text-decoration: none !important;
+                        border-bottom: 1px solid;
+                    }
+
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6 {
+                        color: #5F5F5F;
+                        font-weight: normal;
+                        font-family: Helvetica;
+                        font-size: 20px;
+                        line-height: 125%;
+                        text-align: Left;
+                        letter-spacing: normal;
+                        margin-top: 0;
+                        margin-right: 0;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        padding-top: 0;
+                        padding-bottom: 0;
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+
+                    .ReadMsgBody {
+                        width: 100%;
+                    }
+
+                    .ExternalClass {
+                        width: 100%;
+                    }
+
+                    .ExternalClass,
+                    .ExternalClass p,
+                    .ExternalClass span,
+                    .ExternalClass font,
+                    .ExternalClass td,
+                    .ExternalClass div {
+                        line-height: 100%;
+                    }
+
+                    table,
+                    td {
+                        mso-table-lspace: 0pt;
+                        mso-table-rspace: 0pt;
+                    }
+
+                    #outlook a {
+                        padding: 0;
+                    }
+
+                    img {
+                        -ms-interpolation-mode: bicubic;
+                        display: block;
+                        outline: none;
+                        text-decoration: none;
+                    }
+
+                    body,
+                    table,
+                    td,
+                    p,
+                    a,
+                    li,
+                    blockquote {
+                        -ms-text-size-adjust: 100%;
+                        -webkit-text-size-adjust: 100%;
+                        font-weight: normal !important;
+                    }
+
+                    .ExternalClass td[class="ecxflexibleContainerBox"] h3 {
+                        padding-top: 10px !important;
+                    }
+
+                    h1 {
+                        display: block;
+                        font-size: 26px;
+                        font-style: normal;
+                        font-weight: normal;
+                        line-height: 100%;
+                    }
+
+                    h2 {
+                        display: block;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: normal;
+                        line-height: 120%;
+                    }
+
+                    h3 {
+                        display: block;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: normal;
+                        line-height: 110%;
+                    }
+
+                    h4 {
+                        display: block;
+                        font-size: 18px;
+                        font-style: italic;
+                        font-weight: normal;
+                        line-height: 100%;
+                    }
+
+                    .flexibleImage {
+                        height: auto;
+                    }
+
+                    .linkRemoveBorder {
+                        border-bottom: 0 !important;
+                    }
+
+                    table[class=flexibleContainerCellDivider] {
+                        padding-bottom: 0 !important;
+                        padding-top: 0 !important;
+                    }
+
+                    body,
+                    #bodyTable {
+                        background-color: #F4F4F4;
+                    }
+
+                    #emailHeader {
+                        background-color:#F4F4F4;
+                    }
+
+                    #emailBody {
+                        background-color: #FFFFFF;
+                    }
+
+                    #emailFooter {
+                        background-color: blue;
+                    }
+
+                    .nestedContainer {
+                        background-color: #F8F8F8;
+                        border: 1px solid #CCCCCC;
+                    }
+
+                    .emailButton {
+                        background-color: #205478;
+                        border-collapse: separate;
+                    }
+
+                    .buttonContent {
+                        color: #FFFFFF;
+                        font-family: Helvetica;
+                        font-size: 18px;
+                        font-weight: bold;
+                        line-height: 100%;
+                        padding: 15px;
+                        text-align: center;
+                    }
+
+                    .buttonContent a {
+                        color: #FFFFFF;
+                        display: block;
+                        text-decoration: none !important;
+                        border: 0 !important;
+                    }
+
+                    .emailCalendar {
+                        background-color: #FFFFFF;
+                        border: 1px solid #CCCCCC;
+                    }
+
+                    .emailCalendarMonth {
+                        background-color: #205478;
+                        color: #FFFFFF;
+                        font-family: Helvetica, Arial, sans-serif;
+                        font-size: 16px;
+                        font-weight: bold;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        text-align: center;
+                    }
+
+                    .emailCalendarDay {
+                        color: #205478;
+                        font-family: Helvetica, Arial, sans-serif;
+                        font-size: 60px;
+                        font-weight: bold;
+                        line-height: 100%;
+                        padding-top: 20px;
+                        padding-bottom: 20px;
+                        text-align: center;
+                    }
+
+                    .imageContentText {
+                        margin-top: 10px;
+                        line-height: 0;
+                    }
+
+                    .imageContentText a {
+                        line-height: 0;
+                    }
+
+                    #invisibleIntroduction {
+                        display: none !important;
+                    }
+
+                    span[class=ios-color-hack] a {
+                        color: #275100 !important;
+                        text-decoration: none !important;
+                    }
+
+                    span[class=ios-color-hack2] a {
+                        color: #205478 !important;
+                        text-decoration: none !important;
+                    }
+
+                    span[class=ios-color-hack3] a {
+                        color: #8B8B8B !important;
+                        text-decoration: none !important;
+                    }
+
+                    .a[href^="tel"],
+                    a[href^="sms"] {
+                        text-decoration: none !important;
+                        color: #606060 !important;
+                        pointer-events: none !important;
+                        cursor: default !important;
+                    }
+
+                    .mobile_link a[href^="tel"],
+                    .mobile_link a[href^="sms"] {
+                        text-decoration: none !important;
+                        color: #606060 !important;
+                        pointer-events: auto !important;
+                        cursor: default !important;
+                    }
+
+                    #bodyContent a:link {
+                        color: #FDB813;
+                    }
+
+                    .footerContent a:link {
+                        color: #FDB813;
+                    }
+
+                    @media only screen and (max-width: 480px) {
+                        body {
+                        width: 100% !important;
+                        min-width: 100% !important;
+                        }
+
+                        table[id="emailHeader"],
+                        table[id="emailBody"],
+                        table[id="emailFooter"],
+                        table[class="flexibleContainer"],
+                        td[class="flexibleContainerCell"] {
+                        width: 100% !important;
+                        }
+
+                        td[class="flexibleContainerBox"],
+                        td[class="flexibleContainerBox"] table {
+                        display: block;
+                        width: 100%;
+                        text-align: left;
+                        }
+
+                        td[class="imageContent"] img {
+                        height: auto !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                        }
+
+                        img[class="flexibleImage"] {
+                        height: auto !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                        }
+
+                        img[class="flexibleImageSmall"] {
+                        height: auto !important;
+                        width: auto !important;
+                        }
+
+                        table[class="flexibleContainerBoxNext"] {
+                        padding-top: 10px !important;
+                        }
+
+                        table[class="emailButton"] {
+                        width: 100% !important;
+                        }
+
+                        td[class="buttonContent"] {
+                        padding: 0 !important;
+                        }
+
+                        td[class="buttonContent"] a {
+                        padding: 15px !important;
+                        }
+
+                    }
+                    @media only screen and (-webkit-device-pixel-ratio:.75) {
+                        /* Put CSS for low density (ldpi) Android layouts in here */
+                    }
+
+                    @media only screen and (-webkit-device-pixel-ratio:1) {
+                        /* Put CSS for medium density (mdpi) Android layouts in here */
+                    }
+
+                    @media only screen and (-webkit-device-pixel-ratio:1.5) {
+                        /* Put CSS for high density (hdpi) Android layouts in here */
+                    }
+                    @media only screen and (min-device-width : 320px) and (max-device-width:568px) {}
+                    </style>
+                </head>
+
+                <body bgcolor="#F4F4F4" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+                    <center style="background-color:#F4F4F4;">
+                    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
+                        style="table-layout: fixed;max-width:100% !important;width: 100% !important;min-width: 100% !important;">
+                        <tr>
+                        <td align="center" valign="top" id="bodyCell">
+                            <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="500" id="emailBody">
+                            <tr>
+                                <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="color:#FFFFFF; border-bottom: 5px solid #c0c0c0;"
+                                    bgcolor="#ffffff">
+                                    <tr>
+                                    <td align="center" valign="top">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="500" class="flexibleContainer">
+                                        <tr>
+                                            <td align="center" valign="top" width="500" class="flexibleContainerCell">
+                                            <table border="0" cellpadding="30" cellspacing="0" width="100%">
+                                                <tr>
+                                                <td align="center" valign="top" class="textContent">
+                                                    <img style="height: 75px; width: auto; max-width: 500px;" src="https://custom.omnilert.net/7b1fdae7ad826c17f97197718b73d452/email_format_logo/5eab379719f18" alt="logo" />
+                                                </td>
+                                                </tr>
+                                            </table>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </td>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#FFFFFF">
+                                    <tr>
+                                    <td align="center" valign="top">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="500" class="flexibleContainer">
+                                        <tr>
+                                            <td align="center" valign="top" width="500" class="flexibleContainerCell">
+                                            <table border="0" cellpadding="30" cellspacing="0" width="100%">
+                                                <tr>
+                                                <td align="center" valign="top">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td valign="top" class="textContent main">
+                                                        <h3 mc:edit="header"
+                                                            style="color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:left;">
+                                                            Vehicle Fire</h3>
+                                                        <div mc:edit="body"
+                                                            style="text-align:left;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;color:#5F5F5F;line-height:135%;"
+                                                            id="bodyContent">
+                                                            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<?xml encoding="UTF-8"><html><body><p>N 10th St and E Leigh St. Police on scene. Avoid area until further notice.</p></body></html><br />
+
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    </table>
+                                                </td>
+                                                </tr>
+                                            </table>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </td>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="color:#FFFFFF; border-top: 5px solid #c0c0c0" bgcolor="#38383B">
+                                    <tr>
+                                    <td align="center" valign="top">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="500" class="flexibleContainer">
+                                        <tr>
+                                            <td align="center" valign="top" width="500" class="flexibleContainerCell">
+                                            <table border="0" cellpadding="30" cellspacing="0" width="100%">
+                                                <tr>
+                                                <td valign="top" class="textContent">
+                                                    <div style="color: #ffffff;" class="footerContent">
+                                                    <strong><a style="color: #fdb813;" href="https://police.vcu.edu/facts/warning.html">Why am I receiving this email?</a></strong> Virginia Commonwealth University is dedicated to promoting a safe and secure environment for learning, living, working, or visiting. During an emergency, information leads to potentially life-saving decision making. To report a crime or emergency on campus, use the LiveSafe app or call (804) 828-1234. If you are off campus, dial 911.
+<div style="color: #ffffff;"><strong><a style="color: #fdb813;" href="https://vcu.omnilert.net/">Access your Omnilert account here</a></strong></div>
+                                                    </div>
+                                                    <img src="https://email.omnilert.io/images/omnilert.png?id=49300612&e=palmoreja@vcu.edu">
+                                                </td>
+                                                </tr>
+                                            </table>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </td>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            </table>
+                            <table bgcolor="#F4F4F4" border="0" cellpadding="0" cellspacing="0" width="500" id="emailFooter">
+                            <tr>
+                                <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                    <td align="center" valign="top">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="500" class="flexibleContainer">
+                                        <tr>
+                                            <td align="center" valign="top" width="500" class="flexibleContainerCell">
+                                            <table border="0" cellpadding="30" cellspacing="0" width="100%">
+                                                <tr>
+                                                <td valign="top" bgcolor="#F4F4F4">
+
+                                                    <div
+                                                    style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
+                                                    <div>
+                                                        <a href="https://email.omnilert.io/unsubscribe/248701c05acef778fa64" id="unsubscribe">Unsubscribe</a>
+                                                    </div>
+                                                    </div>
+
+                                                </td>
+                                                </tr>
+                                            </table>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </td>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            </table>
+                        </td>
+                        </tr>
+                    </table>
+                    </center>
+                </body>
+            </html>
+
+
+--b1=_QeChiCzwbm2ZKMQKtk8BX2M4nvXCQ1nxn4Ge3o7Gmf0--

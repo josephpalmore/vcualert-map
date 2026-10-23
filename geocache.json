@@ -1,0 +1,18 @@
+{
+  "{\"type\":\"intersection\",\"a\":\"N 10th St\",\"b\":\"E Leigh St\"}": {
+    "lat": 37.5431521,
+    "lng": -77.4302616
+  },
+  "{\"type\":\"between\",\"street\":\"Cherry St.\",\"from\":\"Main\",\"to\":\"Floyd\"}": {
+    "lat": 37.546512199999995,
+    "lng": -77.45282929999999
+  },
+  "{\"type\":\"place\",\"query\":\"Monroe Park\"}": {
+    "lat": 37.546938,
+    "lng": -77.4502448
+  },
+  "{\"type\":\"intersection\",\"a\":\"Broad street\",\"b\":\"3rd street\"}": {
+    "lat": 37.5439895,
+    "lng": -77.4392963
+  }
+}

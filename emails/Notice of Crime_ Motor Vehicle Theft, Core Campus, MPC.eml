@@ -1,0 +1,675 @@
+Delivered-To: palmoreja@apps.vcu.edu
+Received: by 2002:a05:7110:2032:b0:35e:c15b:7fee with SMTP id x18csp643915gea;
+        Wed, 7 Oct 2026 10:32:36 -0700 (PDT)
+X-Received: by 2002:a05:701b:281c:b0:13f:b41f:bda with SMTP id a92af1059eb24-16205514a3emr2665332c88.16.1791394356306;
+        Wed, 07 Oct 2026 10:32:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791394356; cv=none;
+        d=google.com; s=arc-20260327;
+        b=svrnMZXLhCB0A2udSvsPNbC1ktQuq8dLLZINM7P+511ylb5GPDWC6vqRE4+KIM4pd3
+         9TnZP8/RD28K6mMrNNPXRBBdsExQ6DWQPSj/8cUMftgSRzj2xsHsH5E6Lqcaxba501ix
+         x4+Glc4KevUKxz0/iXvZnEFDvZztUCinyc1djJCQmZq3FyChoAfKaV7Bp1jkrcKAduuH
+         heeFNJ/oN4R98GMAmI8LMX+C9JWnHkwTu6RqNHamh5tEHt3m0lmASqsoZ9v7ZReqPwdG
+         6XpNRyh2vYpZDEQckN5z2ysXVs91zVetwNcDWjLXiAklFcCxiR+f6Va2ilFIAUTdpXrM
+         r9jw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=list-unsubscribe-post:list-unsubscribe:mime-version:subject
+         :message-id:reply-to:from:date:to:dkim-signature:dkim-signature;
+        bh=cRxLfxwMye1jW4N5P9HA7cd8YfVgDgzz5HDUgGTXjx0=;
+        fh=+LI6i6C7tpdFXpvjhPR3uZoigv4XAJQxKmnCI8wxhl0=;
+        b=dlXg7RCGmGZ4p/8hw70JEP8KxNuIyN2ilKx6xGVLwiWs8TNTExsZ25RQfXQB/bcbB/
+         HmpRWzj/YuEt2mb63DguQcKbI8lXVLIxZDGzUeKXThtf/EfSx1z+AdREUwRDXNzuM6rm
+         wYX52X6F22wo2nRoth9AJnx0sUFf5jxIewNdhq0Ho3xoB4E10/e2FSBe2oNf50xVPIK8
+         AmTA4r/WzKzcn86Yw+14UqRoTsA7OfLS8qV7aQUebI397/PEgWsdYGVRD/EP67AvkEdS
+         A7ExdH+CFq/HtUPQRuKn6vhd+TjK5k7yKSuiE6uOjn1on73WICqOwWaUZHG95pQFOpFm
+         Pokw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@vcu.edu header.s=vcucisco header.b=XYvy+p4Z;
+       dkim=pass header.i=@VCU.EDU header.s=VCUMASSMAIL header.b=gz8CCPvt;
+       spf=pass (google.com: domain of owner-nolist-vcu-261007d-lteyg2eh*palmoreja**apps*-vcu*-edu@massmail.vcu.edu designates 20.75.2.183 as permitted sender) smtp.mailfrom=owner-nolist-VCU-261007D-lteyg2eh*palmoreja**APPS*-VCU*-EDU@massmail.vcu.edu
+Return-Path: <owner-nolist-VCU-261007D-lteyg2eh*palmoreja**APPS*-VCU*-EDU@massmail.vcu.edu>
+Received: from esa.vcu.iphmx.com (esa.vcu.iphmx.com. [68.232.142.229])
+        by mx.google.com with ESMTPS id a92af1059eb24-16166217e28si13512770c88.41.2026.10.07.10.32.35
+        for <palmoreja@apps.vcu.edu>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 07 Oct 2026 10:32:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of owner-nolist-vcu-261007d-lteyg2eh*palmoreja**apps*-vcu*-edu@massmail.vcu.edu designates 20.75.2.183 as permitted sender) client-ip=20.75.2.183;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@vcu.edu header.s=vcucisco header.b=XYvy+p4Z;
+       dkim=pass header.i=@VCU.EDU header.s=VCUMASSMAIL header.b=gz8CCPvt;
+       spf=pass (google.com: domain of owner-nolist-vcu-261007d-lteyg2eh*palmoreja**apps*-vcu*-edu@massmail.vcu.edu designates 20.75.2.183 as permitted sender) smtp.mailfrom=owner-nolist-VCU-261007D-lteyg2eh*palmoreja**APPS*-VCU*-EDU@massmail.vcu.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=vcu.edu; i=@vcu.edu; q=dns/txt; s=vcucisco;
+  t=1791394356; x=1822930356;
+  h=to:date:from:reply-to:message-id:subject:mime-version:
+   list-unsubscribe;
+  bh=6GAlPvMUOv7cwGwSH5DiIQfykQXGPfcsCy8hD3yxlBI=;
+  b=XYvy+p4ZTbWyPO/dG0yCmSRdX1ChkJ5LVJcwI2rUn1+58JX6yqDGzszP
+   3g0T0DT7ovV7AleigoKA2r4LP0ZRGZohxd60bixBODYh7B866/0MRcjWP
+   tACbxEPquBmPsqWAXCqTcrDMzXy9gqfNuuGl1WeZE3RJIZUpJuZ30RHwo
+   8=;
+X-CSE-ConnectionGUID: fwr75xzwSOGTzZOCBCtn8w==
+X-CSE-MsgGUID: Q9Iip/pHTPeY+WfDQWFV+Q==
+X-IronPort-AV: E=Sophos;i="6.27,144,1787025600"; 
+   d="scan'208,217";a="153699061"
+Received: from syrma.ease.lsoft.com ([20.75.2.183])
+  by esa7.vcu.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 07 Oct 2026 13:32:18 -0400
+Received: from MMVCU (massmail.vcu.edu [20.75.2.182])
+	by syrma.ease.lsoft.com (Postfix) with ESMTP id 7281840876F7
+	for <palmoreja@APPS.VCU.EDU>; Wed,  7 Oct 2026 13:30:48 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha256; d=VCU.EDU; s=VCUMASSMAIL; c=relaxed/relaxed; bh=cRxLfxwMye1jW4N5P9HA7cd8YfVgDgzz5HDUgGTXjx0=; i=@VCU.EDU;
+ h=To:Date:From:Reply-To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe:List-Unsubscribe-Post;
+ b=gz8CCPvt+UcUEiv8+Z7iyooM0Gj6P0ituslbBKlDGfc+IZasH05h4TIXuKSHixndOiotbevQF3Z+6u6Ws7iI6xt/Qe7BDirBAa0kepDLFH468z5Hx1yVuVVSLd+WWc9AuOq5IsD6mhkRwKbROfImN270U6VMh/0jedKo6F8e1mWPgb7qT1dHkV7RjYysEQao5RZxBxCmchty/2ORJBhFwJQ+2JTaohjlySYAYJkHdQ3CH9JgRp2na5EhvYwWutA/4l2VQAMgwFJhiDnr6CWEUo5tnHLGxD2XgojLwr7cTKqkMehv1b83kosIuHPqsHdo1T16+BLue0LgPNILHUtVIw==
+To: palmoreja@APPS.VCU.EDU
+Date: Wed, 7 Oct 2026 13:27:11 -0400 (EDT)
+From: VCUALERT <vcualert@vcu.edu>
+Reply-To: vcualert@vcu.edu
+Message-ID: <11526-688720586.3076.1791394154047@MMVCU.EASE.LSOFT.COM>
+Subject: Notice of Crime: Motor Vehicle Theft, Core Campus, MPC
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="----=_Part_3075_1617807181.1791394032081"
+List-Unsubscribe: <https://massmail.vcu.edu/list/leave.html?mContainer=403&mOwner=G1d1e1l&address=palmoreja%40APPS.VCU.EDU&val=aiff95pg&d=261007D%2C53780%2C1%2C0%3A0>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+
+This is a multi-part message in MIME format.
+
+------=_Part_3075_1617807181.1791394032081
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+To view this email in a browser, click here (<https://massmail.vcu.edu/trk/=
+clickp?ref=3Dz173r7sgll_0-3470e_0_0x25f35fx053780&a1=3D=
+aiff95pg&dr=3D0&a4=3Dpalmoreja%40apps.vcu.edu&a3=3D11526&a2=3D=
+palmoreja%40APPS.VCU.EDU&a0=3D53780&a5=3D5343087&ssq=3D=
+5343087>).
+
+
+
+=A0
+
+VCU Alert Logo: <https://massmail.vcu.edu/trk/click?ref=3Dz173r7sgll_0-3470=
+e_0_0x25f360x053780>
+
+=A0
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+# Notice of Crime: Motor Vehicle Theft, Core Campus, MPC
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+
+In compliance with the "Timely Warning"=A0provisions of the federal Jeanne =
+Clery Campus Safety Act, Virginia Commonwealth University is providing noti=
+ce of a recently reported crimethat may pose a serious or continuing threat=
+ to campus safety. This notice is intended to aid in the prevention of simi=
+lar crimes and to enable members of the university community to protect the=
+mselves. VCU is dedicated to promoting a safe and secure environment for le=
+arning, living, working or visiting.=20
+
+Reported offense: Motor Vehicle Theft (Motorized Scooter)
+
+Location:=A012 N Brunswick St (VCU Dance Center)
+
+Date and time of incident:=A0October 7, 2026 at 12:25 p.m.
+
+Brief description of how the crime took place:=A0On October 7, 2026 at 12:4=
+2 p.m., VCU Police was notified of the theft of a motorized scooter from th=
+e above location.=A0 The vehicle was secured to a bike rack with a pink cab=
+le lock.=A0 The scooter was described as a black ?Fifth Wheel? brand vehicl=
+e. The suspect cut the cable lock with bolt cutters and left the scene in a=
+ black Toyota Prius southbound towards W Main St.=20
+
+Suspect/s:=A0For a full description of the suspect/s visit=A0alert.vcu.edu =
+(<https://massmail.vcu.edu/trk/click?ref=3Dz173r7sgll_0-3470e_0_0x23b504x0=
+53780>).
+
+Investigating agency:=A0VCU Police are leading the investigation.=20
+
+Anyone with information pertaining to any crime or suspicious activity shou=
+ld contact the VCU Police Department at (804) 828-1234. For incidents occur=
+ring off-campus in the city of Richmond, please call 911 for emergencies.
+
+Anyone can submit tips, screenshots, photos and videos directly to VCU Poli=
+ce via the VCU LiveSafe app, which is monitored 24/7. For more information,=
+ visit police.vcu.edu/stay-safe/livesafe (<https://massmail.vcu.edu/trk/cli=
+ck?ref=3Dz173r7sgll_0-3470e_0_0x251da5x053780>). Tips can als=
+o be submitt=
+ed to Metro Richmond Crime Stoppers at (804) 780-1000 or on the P3 Tips mob=
+ile app; for more information, visit rvacrimestoppers.org/ (<https://massma=
+il.vcu.edu/trk/click?ref=3Dz173r7sgll_0-3470e_0_0x251da6x0=
+53780>).
+
+VCU Police would like to remind the VCU and VCU Health community to keep pe=
+rsonal safety in mind, be prepared and take responsibility for your own saf=
+ety and for the safety of others. A few key reminders:
+
+Motor Vehicle Theft (Cars, trucks, e-scooters, e-bikes):
+
+ * Never leave your vehicle unattended, unlocked, running and/or with the k=
+eys inside.
+ * Always lock your car doors and windows.
+ * Lock a motorcycle, scooter or e-bike to a stationary object that is immo=
+vable, such as the end of a bike rack. Use a U-lock or a thick chain. Lock =
+the forks or disc brakes.
+ * Keep valuables in the trunk of your vehicle or take them with you.
+ * Do not keep a spare key in your vehicle. This includes in your vehicle's=
+ gas compartment.
+ * If you see someone acting suspiciously near vehicles or bike racks, cont=
+act VCU Police.
+
+Transportation
+
+VCU Parking and Transportation offers a variety of options to help communit=
+y members travel between both campuses -- day and night. For more informati=
+on, visit parking.vcu.edu/transportation/: <https://massmail.vcu.edu/trk/cl=
+ick?ref=3Dz173r7sgll_0-3470e_0_0x251d4dx053780>.
+
+###
+------=_Part_3075_1617807181.1791394032081
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DISO=
+-8859-1"/>
+
+=09<title></title>
+=09<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1.0">
+
+=09
+=09<style type=3D"text/css">
+html { width: 100% !important; height: 100% !important; }
+=09=09=09body, #bodyTable { width: 100% !important; height: 100% !important=
+; margin: 0; padding: 0; }
+=09=09=09body, table, td, p, a, li, blockquote { -ms-text-size-adjust: 100%=
+; -webkit-text-size-adjust: 100%; }
+=09=09=09table, td { border-collapse: collapse; mso-table-lspace: 0; mso-ta=
+ble-rspace: 0; }
+=09=09=09img { -ms-interpolation-mode: bicubic; }
+=09=09=09img, a img { border: 0; outline: none; text-decoration: none; }
+=09</style>
+=09
+</head>
+<body style=3D"background-color: #f7f7f7; margin: 0px; cursor: auto;"><!--[=
+if gte mso 15]><table border=3D'0' cellpadding=3D'0' cellspacing=3D'0' widt=
+h=3D'100%' align=3D'left'><tr><td><![endif]-->
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"background=
+-color:#f7f7f7; color:inherit; font-size:inherit; width:100% !important" wi=
+dth=3D"100%">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td style=3D"padding-left:5px; padding-right:5px">
+=09=09=09=09<!--[if lt mso 12]><!-- --><table align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"color:inherit; font-size:inhe=
+rit; max-width:700px; width:100% !important"><!--<![endif]--><!--[if gte ms=
+o 12]><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"color:inherit; font-size:inherit; width:700px"><![endif]-->
+=09=09=09=09=09<tbody>
+=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09<!--[if lt mso 12]><!-- --><div style=3D"color:#000=
+000; font-family:Calibri,Helvetica,sans-serif; font-size:11pt; padding-bott=
+om:1px; padding-top:1px"><!--<![endif]--><!--[if gte mso 12]><table border=
+=3D'0' cellpadding=3D'0' cellspacing=3D'0' style=3D'color:inherit;font-size=
+:inherit;width:100%;'><tr><td style=3D"color:#000000; font-family:Calibri,H=
+elvetica,sans-serif; font-size:11pt; padding-bottom:1px; padding-top:1px"><=
+![endif]-->
+=09=09=09=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"color:inherit; font-size:inherit; width:1=
+00%">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"9">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if gte mso 12]><table border=3D=
+'0' cellpadding=3D'0' cellspacing=3D'0' style=3D'color:inherit; font-size:i=
+nherit; width:100%;'><tr><td style=3D"font-family:'Calibri','Helvetica',san=
+s-serif; font-size:11.00pt;  padding:10px"><![endif]--><!--[if lt mso 12]><=
+!-- --><div class=3D"background" style=3D"font-family:'Calibri','Helvetica'=
+,sans-serif; font-size:11.00pt; overflow:auto; padding:10px"><!--<![endif]-=
+->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"margin:12px 6px 12px =
+0;text-align:center;"><span style=3D"font-size:8pt">To view this email in a=
+ browser, <a href=3D"https://massmail.vcu.edu/trk/clickp?ref=3Dz173r7sgll_0=
+-3470e_0_0x35f35ex053780&amp;a1=3Daiff95pg=
+&amp;dr=3D0=
+&amp;a4=3Dpalmoreja%40apps.vcu.edu&amp;a3=3D11526&amp;a=
+2=3Dpalmoreja%40APPS.VCU.EDU=
+&amp;a0=3D53780&amp;a5=3D5343087&amp;=
+ssq=
+=3D5343087" target=3D"_blank" style=3D"color:rgb(29, 98, =
+247);">click he=
+re</a>.</span></p>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if lt mso 12]><!-- --></div><!-=
+-<![endif]--><!--[if gte mso 12]></td></tr></table><![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"3" style=3D"height:1px; =
+width:3px" width=3D"3"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#ededed; =
+height:1px; width:570px" width=3D"570"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"3" style=3D"height:1px; =
+width:3px" width=3D"3"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"2" style=3D"height:1px; =
+width:1.875px" width=3D"1.875"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:2.125px" width=3D"2.125"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#d9d9d9; =
+height:1px; width:570px" width=3D"570"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"2" style=3D"height:1px; =
+width:2px" width=3D"2"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"height:1px; width:1px" wid=
+th=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:2.125px" width=3D"2.125"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#cacaca; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#bbbbbb; =
+height:1px; width:570px" width=3D"570"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#cacaca; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"height:1px; width:1px" wid=
+th=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#cacaca; =
+height:1px; width:2.125px" width=3D"2.125"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#a7a7a7; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#949494; =
+height:1px; width:570px" width=3D"570"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#a7a7a7; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#cacaca; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#ededed; =
+width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#d9d9d9; =
+width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#bbbbbb; =
+width:2.125px" width=3D"2.125"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#949494; =
+width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td background=3D"https://massmail.vcu.=
+edu/list/img/pic?t=3DHTML_IMAGE&j=3D261007D&i=3D163f9c4119c2c" style=3D"bac=
+kground-color:#ffffff; background-repeat:no-repeat; width:570px" width=3D"5=
+70">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<table border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"color:inherit; font-size:inherit; width:100%">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"padding:15px 1=
+5px 10px 15px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if gte mso 12]><tab=
+le border=3D'0' cellpadding=3D'0' cellspacing=3D'0' style=3D'color:inherit;=
+ font-size:inherit; width:100%;'><tr><td style=3D"color:#000000;font-family=
+:Calibri, Helvetica, sans-serif;font-size:11pt;"><![endif]--><!--[if lt mso=
+ 12]><!-- --><div class=3D"paper" style=3D"color:#000000;font-family:Calibr=
+i, Helvetica, sans-serif;font-size:11pt;overflow:auto;"><!--<![endif]--><p =
+style=3D"margin:12px 6px 12px 0;text-align:center;"><br>
+<br>
+&nbsp;</p>
+
+<p style=3D"margin:12px 6px 12px 0;text-align:center;"><span style=3D"font-=
+family:'Calibri','Helvetica',sans-serif"><img alt=3D"VCU Alert Logo" height=
+=3D"67" src=3D"https://massmail.vcu.edu/list/img/pic?t=3DHTML_IMAGE=
+&j=3D261007D&i=3Dke8xk8sqpa52e71uscc" style=3D"height:67px; width:300px" wi=
+dth=3D"3=
+00"></span><br>
+&nbsp;</p>
+
+<p style=3D"margin:12px 6px 12px 0;text-align:center;"></p>
+
+<h1 style=3D"color:rgb(0, 0, 0);font-size:200%;margin:8px 8px 8px 0;text-al=
+ign:center;"><span style=3D"font-size:14pt"><b>Notice of Crime: Motor Vehic=
+le Theft, Core Campus, MPC</b></span></h1>
+
+<p style=3D"margin:12px 6px 12px 0;"></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<span style=3D"background-color:white"><span style=3D"color:black">In compl=
+iance with the "Timely Warning"&nbsp;provisions of the federal <=
+i>Jeanne Cl=
+ery Campus Safety Act,</i> Virginia Commonwealth University </span></span><=
+span lang=3D"EN" style=3D"color:black">is providing notice of a recently re=
+ported </span>crime<b> </b><span style=3D"color:black">that may pose a seri=
+ous or continuing threat to campus safety. This notice is intended to aid i=
+n the prevention of similar crimes and to enable members of the university =
+community to protect themselves. VCU is dedicated to promoting a safe and s=
+ecure environment for learning, living, working or visiting. </span></span>=
+</span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<b><span lang=3D"EN" style=3D"color:black">Reported offense: </span></b></s=
+pan></span><span lang=3D"EN" style=3D"font-size:11.0pt"><span style=3D"font=
+-family:&quot;Calibri&quot;,sans-serif">Motor Vehicle=
+ Theft (Motorized Scoo=
+ter)</span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><b><span style=3D"font-family:Calibri,sans-seri=
+f"><span lang=3D"EN" style=3D"color:black">Location:&nbsp;</span=
+></span></b=
+></span><span lang=3D"EN" style=3D"font-size:11.0pt"><span style=3D"font-fa=
+mily:&quot;Calibri&quot;,sans-serif"><span style=3D"c=
+olor:black">12 N Bruns=
+wick St (VCU Dance Center)</span></span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<b><span lang=3D"EN" style=3D"color:black">Date and time of incident:=
+&nbsp;=
+</span></b></span></span><span lang=3D"EN" style=3D"font-size:11.0pt"><span=
+ style=3D"font-family:&quot;Calibri&quot;,sans-serif"=
+>October 7, 2026 at 12=
+:25 p.m.</span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<b><span lang=3D"EN" style=3D"color:black">Brief description of how the cri=
+me took place:&nbsp;</span></b></span></span><span lang=3D"EN" s=
+tyle=3D"fon=
+t-size:11.0pt"><span style=3D"font-family:&quot;Calibri=
+&quot;,sans-serif">O=
+n October 7, 2026 at 12:42 p.m., VCU Police was notified of the theft of a =
+motorized scooter from the above location.&nbsp; The vehicle was=
+ secured to=
+ a bike rack with a pink cable lock.&nbsp; The scooter was descr=
+ibed as a b=
+lack &#8220;Fifth Wheel&#8221; brand vehicle. The suspect cut the cable loc=
+k with bolt cutters and left the scene in a black Toyota Prius southbound t=
+owards W Main St. </span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<b><span lang=3D"EN" style=3D"color:black">Suspect/s:&nbsp;</spa=
+n></b></spa=
+n>For a full description of the suspect/s visit<a href=3D"https://massmail.=
+vcu.edu/trk/click?ref=3Dz173r7sgll_0-3470e_0_0x31c915x053780"=
+ style=3D"co=
+lor:rgb(29, 98, 247);">&nbsp;alert.vcu.edu</a>.</span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<b><span lang=3D"EN" style=3D"color:black">Investigating agency:=
+&nbsp;</spa=
+n></b></span></span><span lang=3D"EN" style=3D"font-size:11.0pt"><span styl=
+e=3D"font-family:&quot;Calibri&quot;,sans-serif">VCU =
+Police are leading <sp=
+an style=3D"color:black">the investigation. </span></span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<span lang=3D"EN" style=3D"color:black">Anyone with information pertaining =
+to any crime or suspicious activity should contact the VCU Police Departmen=
+t at (804) 828-1234. For incidents occurring off-campus in the </span>c<spa=
+n style=3D"color:black">ity of Richmond, please call 911 for emergencies</s=
+pan>.</span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+Anyone can submit tips, screenshots, photos and videos directly to VCU Poli=
+ce via the VCU LiveSafe app, which is monitored 24/7. For more information,=
+ visit <a href=3D"https://massmail.vcu.edu/trk/click?ref=3Dz173r7sgll_0-347=
+0e_0_0x351d9fx053780" style=3D"color:blue;text-decoration:und=
+erline;">pol=
+ice.vcu.edu/stay-safe/livesafe</a><span style=3D"background-color:white"><s=
+pan style=3D"color:#444746">. </span></span>Tips can also be submitted to M=
+etro Richmond Crime Stoppers at (804) 780-1000 or on the P3 Tips mobile app=
+; for more information, visit <a href=3D"https://massmail.vcu.edu/trk/click=
+?ref=3Dz173r7sgll_0-3470e_0_0x351da0x053780" style=3D"color:b=
+lue;text-dec=
+oration:underline;">rvacrimestoppers.org/</a>.</span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+VCU Police would like to remind the VCU and VCU Health community to keep pe=
+rsonal safety in mind, be prepared and take responsibility for your own saf=
+ety and for the safety of others. A few key reminders:</span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<b><span lang=3D"EN" style=3D"color:black">Motor Vehicle Theft (</span>Cars=
+, trucks, e-scooters, e-bikes)<span style=3D"color:black">:</span></b></spa=
+n></span></p>
+
+<ul>
+=09<li style=3D"margin-left:8px"><span style=3D"font-size:11pt"><span style=
+=3D"font-family:Calibri,sans-serif"><span lang=3D"EN" style=3D"color:black"=
+>Never leave your vehicle unattended, unlocked, running and/or with the key=
+s inside.</span></span></span></li>
+=09<li style=3D"margin-left:8px"><span style=3D"font-size:11pt"><span style=
+=3D"font-family:Calibri,sans-serif"><span lang=3D"EN" style=3D"color:black"=
+>Always lock your car doors and windows.</span></span></span></li>
+=09<li style=3D"margin-left:8px"><span style=3D"font-size:11pt"><span style=
+=3D"font-family:Calibri,sans-serif"><span lang=3D"EN" style=3D"color:black"=
+>Lock </span>a<span style=3D"color:black"> motorcycle, sc</span>ooter or e-=
+bike<span style=3D"color:black"> to a stationary object that is immovable, =
+such as the end of a bike rack. Use a </span>U-lock or a <span style=3D"col=
+or:black">thick chain. Lock the forks or disc brakes.</span></span></span><=
+/li>
+=09<li style=3D"margin-left:8px"><span style=3D"font-size:11pt"><span style=
+=3D"font-family:Calibri,sans-serif"><span lang=3D"EN" style=3D"color:black"=
+>Keep </span>valuables<span style=3D"color:black"> in the trunk of your veh=
+icle or take them with you.</span></span></span></li>
+=09<li style=3D"margin-left:8px"><span style=3D"font-size:11pt"><span style=
+=3D"font-family:Calibri,sans-serif">Do not keep a spare key in your vehicle=
+. This includes i<span style=3D"color:black">n your vehicle's gas compartme=
+nt.</span></span></span></li>
+=09<li style=3D"margin-left:8px"><span style=3D"font-size:11pt"><span style=
+=3D"font-family:&quot;Calibri&quot;,sans-serif"><span=
+ style=3D"color:black"=
+>If </span></span><span style=3D"font-family:&quot;Calibri=
+&quot;,sans-serif=
+">you see someone acting suspiciously near vehicles or bike racks,<span sty=
+le=3D"color:black"> contact VCU Police.</span></span></span></li>
+</ul>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<b><u>Transportation</u></b></span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;"><sp=
+an style=3D"font-size:11pt"><span style=3D"font-family:Calibri,sans-serif">=
+<span style=3D"background-color:white">VCU Parking and Transportation offer=
+s a variety of options to help community members travel between both campus=
+es -- day and night. For more information, visit </span><a href=3D"https://=
+massmail.vcu.edu/trk/click?ref=3Dz173r7sgll_0-3470e_0_0x351dadx0=
+53780" st=
+yle=3D"color:blue;text-decoration:underline;"><span style=3D"background-col=
+or:white">parking.vcu.edu/transportation/</span></a><span style=3D"backgrou=
+nd-color:white">.</span></span></span></p>
+
+<p style=3D"margin:12px 6px 12px 0;margin-bottom:16px;margin-top:16px;text-=
+align:center;"><span style=3D"font-size:11pt"><span style=3D"font-family:Ca=
+libri,sans-serif"><span style=3D"color:black">###</span></span></span></p>
+<!--[if lt mso 12]><!-- --></div><!--<![endif]--><!--[if gte mso 12]></td><=
+/tr></table><![endif]-->
+
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"color:inherit; font-size:inherit; wid=
+th:100% !important" width=3D"100%">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"pa=
+dding-top:10px">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if lt m=
+so 12]><!-- --><table align=3D"center" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"color:inherit; font-size:inherit; max-width:500px; wi=
+dth:100% !important"><!--<![endif]--><!--[if gte mso 12]><table align=3D"ce=
+nter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"color:inher=
+it; font-size:inherit; width:500px"><![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td=
+><img src=3D"https://massmail.vcu.edu/list/img/pic?t=3DHTML_IMAGE=
+&j=3D261007D&i=3D163f9c4119c2b" style=3D"box-sizing:border-box; display:blo=
+ck; width:=
+100%" width=3D"500"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#949494; =
+width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#bbbbbb; =
+width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#d9d9d9; =
+width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#ededed; =
+width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#cacaca; =
+height:1px; width:2.125px" width=3D"2.125"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#a7a7a7; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#949494; =
+height:1px; width:570px" width=3D"570"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#a7a7a7; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#cacaca; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"height:1px; width:1px" wid=
+th=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:2.125px" width=3D"2.125"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#cacaca; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#bbbbbb; =
+height:1px; width:570px" width=3D"570"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#cacaca; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"height:1px; width:1px" wid=
+th=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"2" style=3D"height:1px; =
+width:1.875px" width=3D"1.875"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:2.125px" width=3D"2.125"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#d9d9d9; =
+height:1px; width:570px" width=3D"570"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#e3e3e3; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"2" style=3D"height:1px; =
+width:2px" width=3D"2"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"3" style=3D"height:1px; =
+width:3px" width=3D"3"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#ededed; =
+height:1px; width:570px" width=3D"570"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"background-color:#f2f2f2; =
+height:1px; width:1px" width=3D"1"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"3" style=3D"height:1px; =
+width:3px" width=3D"3"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td colspan=3D"9">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if gte mso 12]><table border=3D=
+'0' cellpadding=3D'0' cellspacing=3D'0' style=3D'color:inherit; font-size:i=
+nherit; width:100%;'><tr><td style=3D"font-family:'Calibri','Helvetica',san=
+s-serif; font-size:11.00pt;  padding:10px"><![endif]--><!--[if lt mso 12]><=
+!-- --><div class=3D"background" style=3D"font-family:'Calibri','Helvetica'=
+,sans-serif; font-size:11.00pt; overflow:auto; padding:10px"><!--<![endif]-=
+->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"margin:12px 6px 12px =
+0;"></p>
+
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"margin:12px 6px 12px =
+0;"></p>
+
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<p style=3D"margin:12px 6px 12px =
+0;"></p>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if lt mso 12]><!-- --></div><!-=
+-<![endif]--><!--[if gte mso 12]></td></tr></table><![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09<!--[if lt mso 12]><!-- --></div>
+=09=09=09=09=09=09=09=09<!--<![endif]--><!--[if gte mso 12]></td></tr></tab=
+le><![endif]--></td>
+=09=09=09=09=09=09</tr>
+=09=09=09=09=09</tbody>
+=09=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+=09
+</table>
+<!--[--><img src=3D"https://massmail.vcu.edu/trk/open?ref=3Dz173r7sgll_0-34=
+70e_0_0x053780" width=3D"1" height=3D"1"><!--]--><!--[if gte =
+mso 15]></td=
+></tr></table><![endif]--></body>
+</html>
+
+------=_Part_3075_1617807181.1791394032081--
